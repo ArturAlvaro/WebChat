@@ -6,16 +6,24 @@ const inputMessage = document.getElementById('inputMessage');
 const chat = document.getElementById('chat');
 const btnRename = document.getElementById('btnRename');
 const ulChat = document.getElementById('users');
+const showUser = document.getElementById('showUser');
 
 let nicknameUser = '';
 
 const getConnectedUser = (nick) => {
   nicknameUser = nick;
+  showUser.innerText = nick;
 };
 
 formButton.addEventListener('click', (e) => {
   e.preventDefault();
-  socket.emit('message', { chatMessage: inputMessage.value, nickname: inputName.value });
+  socket.emit(
+    'message',
+    {
+      chatMessage: inputMessage.value,
+      nickname: inputName.value ? inputName.value : nicknameUser,
+    },
+  );
   inputMessage.value = '';
   inputName.value = '';
 });

@@ -13,12 +13,10 @@ const dataFunc = (date) => {
   return correctDate;
 };
 
-const actualDate = dataFunc(new Date());
-
 const createMsgs = (socket, io) => {
   socket.on('message', async ({ nickname, chatMessage }) => {
-    await create(chatMessage, nickname, actualDate);
-    io.emit('message', `${actualDate} - ${nickname}: ${chatMessage}`);
+    await create(chatMessage, nickname, dataFunc(new Date()));
+    io.emit('message', `${dataFunc(new Date())} - ${nickname}: ${chatMessage}`);
   });
 };
 

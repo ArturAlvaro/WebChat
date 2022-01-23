@@ -4,20 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
   <title>Webchat</title>
 </head>
 <body>
-  <form>
-    <input type="text" id="inputMessage" data-testid="message-box">
-    <!-- <p data-testid="online-user" id="online-user"></p> -->
+  <form id="renameForm">
+    <div id="showUserDiv">
+      <p id="showUser"></p>
+    </div> 
+    <input class="inputTxt" data-testid="nickname-box" type="text" id="inputName">
+    <button data-testid="nickname-button" id="btnRename" type="submit">Renomear</button>
+  </form>
+  <div id="chatUsers">
+    <div id="chatSection">
+      <p id="chatUserTitle">Chat</p>
+      <ul id="chat"></ul>
+    </div>
+    <div id="usersSection">
+      <p id="chatUserTitle">Usuários</p>
+      <ul id="users"></ul>
+    </div>
+  </div>
+  <form id="msgForm">
+    <input class="inputTxt" type="text" id="inputMessage" data-testid="message-box">
     <button data-testid="send-button" id="formButton" type="button">Enviar</button>
   </form>
-  <form>
-    <button data-testid="nickname-button" id="btnRename" type="submit">Renomear</button>
-    <input data-testid="nickname-box" type="text" id="inputName">
-  </form>
-  <ul id="chat"></ul>
-  <ul id="users"></ul>
   <script src="/socket.io/socket.io.js"></script>
   <script src="./js/webchat.js"></script>
 </body>
